@@ -1,50 +1,69 @@
 export const coffeeMenu = [
-  {
-    id: 1,
-    name: "N-Ice Signature Iced Macchiato",
-    price: "$4.99",
-    category: "Cold",
-    // Shows a beautiful layered iced coffee with espresso pouring through milk
-    image: "https://unsplash.com"
-  },
-  {
-    id: 2,
-    name: "Dark Roast Espresso Shot",
-    price: "$2.50",
-    category: "Hot",
-    // Shows a fresh, rich espresso shot with perfect crema in a small cup
-    image: "https://unsplash.com"
-  },
-  {
-    id: 3,
-    name: "Vanilla Bean Cold Brew",
-    price: "$4.25",
-    category: "Cold",
-    // Shows a refreshing glass of dark cold brew coffee over clear ice cubes
-    image: "https://unsplash.com"
-  },
-  {
-    id: 4,
-    name: "Bookworm Matcha Green Tea",
-    price: "$5.15",
-    category: "Hot",
-    // Shows a warm, vibrant green matcha latte with leaf latte art
-    image: "https://unsplash.com"
-  },
-  {
-    id: 5,
-    name: "Classic Hot Mocha Latte",
-    price: "$3.99",
-    category: "Hot",
-    // Shows a cozy hot chocolate-espresso mocha latte with dynamic latte art
-    image: "https://unsplash.com"
-  },
-  {
-    id: 6,
-    name: "Salted Caramel Nitro Frappe",
-    price: "$5.50",
-    category: "Cold",
-    // Shows a blended iced frappe topped with rich whipped cream and caramel drizzle
-    image: "https://unsplash.com"
-  }
+  { id: 1, name: "N-Ice Signature Iced Macchiato", price: "$4.99", category: "Cold", image: "/macchiato.jpg" },
+  { id: 2, name: "Dark Roast Espresso Shot", price: "$2.50", category: "Hot", image: "/espresso.jpg" },
+  { id: 3, name: "Vanilla Bean Cold Brew", price: "$4.25", category: "Cold", image: "/coldbrew.jpg" },
+  { id: 4, name: "Bookworm Matcha Green Tea", price: "$5.15", category: "Hot", image: "/matcha.jpg" },
+  { id: 5, name: "Classic Hot Mocha Latte", price: "$3.99", category: "Hot", image: "/mocha.jpg" },
+  { id: 6, name: "Salted Caramel Nitro Frappe", price: "$5.50", category: "Cold", image: "/frappe.jpg" },
+  { id: 7, name: "Cortado Cinnamon Blend", price: "$3.75", category: "Hot", image: "/cortado.jpg" },
+  { id: 8, name: "White Chocolate Iced Mocha", price: "$5.25", category: "Cold", image: "/whitemocha.jpg" },
+  { id: 9, name: "Affogato Espresso Scoop", price: "$4.50", category: "Cold", image: "/affogato.jpg" }
+];
+
+export const libraryBooks = [
+  // 10 BORROWED BOOKS
+  { id: 101, title: "The Great Gatsby", author: "F. Scott Fitzgerald", status: "Borrowed" },
+  { id: 102, title: "To Kill a Mockingbird", author: "Harper Lee", status: "Borrowed" },
+  { id: 103, title: "1984", author: "George Orwell", status: "Borrowed" },
+  { id: 104, title: "The Catcher in the Rye", author: "J.D. Salinger", status: "Borrowed" },
+  { id: 105, title: "Brave New World", author: "Aldous Huxley", status: "Borrowed" },
+  { id: 106, title: "The Hobbit", author: "J.R.R. Tolkien", status: "Borrowed" },
+  { id: 107, title: "Fahrenheit 451", author: "Ray Bradbury", status: "Borrowed" },
+  { id: 108, title: "Animal Farm", author: "George Orwell", status: "Borrowed" },
+  { id: 109, title: "The Odyssey", author: "Homer", status: "Borrowed" },
+  { id: 110, title: "Pride and Prejudice", author: "Jane Austen", status: "Borrowed" },
+
+  // 42 AVAILABLE BOOKS
+  { id: 111, title: "The Grapes of Wrath", author: "John Steinbeck", status: "Available" },
+  { id: 112, title: "Lord of the Flies", author: "William Golding", status: "Available" },
+  { id: 113, title: "The Great Expectations", author: "Charles Dickens", status: "Available" },
+  { id: 114, title: "Moby Dick", author: "Herman Melville", status: "Available" },
+  { id: 115, title: "Ulysses", author: "James Joyce", status: "Available" },
+  { id: 116, title: "The Scarlet Letter", author: "Nathaniel Hawthorne", status: "Available" },
+  { id: 117, title: "The Sound and the Fury", author: "William Faulkner", status: "Available" },
+  { id: 118, title: "The Divine Comedy", author: "Dante Alighieri", status: "Available" },
+  { id: 119, title: "The Iliad", author: "Homer", status: "Available" },
+  { id: 120, title: "Wuthering Heights", author: "Emily Brontë", status: "Available" },
+  { id: 121, title: "Jane Eyre", author: "Charlotte Brontë", status: "Available" },
+  { id: 122, title: "Crime and Punishment", author: "Fyodor Dostoevsky", status: "Available" },
+  { id: 123, title: "The Brothers Karamazov", author: "Fyodor Dostoevsky", status: "Available" },
+  { id: 124, title: "War and Peace", author: "Leo Tolstoy", status: "Available" },
+  { id: 125, title: "Anna Karenina", author: "Leo Tolstoy", status: "Available" },
+  { id: 126, title: "The Stranger", author: "Albert Camus", status: "Available" },
+  { id: 127, title: "The Trial", author: "Franz Kafka", status: "Available" },
+  { id: 128, title: "The Metamorphosis", author: "Franz Kafka", status: "Available" },
+  { id: 129, title: "Don Quixote", author: "Miguel de Cervantes", status: "Available" },
+  { id: 130, title: "The Catch-22", author: "Joseph Heller", status: "Available" },
+  { id: 131, title: "The Sun Also Rises", author: "Ernest Hemingway", status: "Available" },
+  { id: 132, title: "A Farewell to Arms", author: "Ernest Hemingway", status: "Available" },
+  { id: 133, title: "Old Man and the Sea", author: "Ernest Hemingway", status: "Available" },
+  { id: 134, title: "Lolita", author: "Vladimir Nabokov", status: "Available" },
+  { id: 135, title: "One Hundred Years of Solitude", author: "Gabriel García Márquez", status: "Available" },
+  { id: 136, title: "The Castle", author: "Franz Kafka", status: "Available" },
+  { id: 137, title: "The Plague", author: "Albert Camus", status: "Available" },
+  { id: 138, title: "Frankenstein", author: "Mary Shelley", status: "Available" },
+  { id: 139, title: "Dracula", author: "Bram Stoker", status: "Available" },
+  { id: 140, title: "The Picture of Dorian Gray", author: "Oscar Wilde", status: "Available" },
+  { id: 141, title: "Les Misérables", author: "Victor Hugo", status: "Available" },
+  { id: 142, title: "Madame Bovary", author: "Gustave Flaubert", status: "Available" },
+  { id: 143, title: "The Count of Monte Cristo", author: "Alexandre Dumas", status: "Available" },
+  { id: 144, title: "Gulliver's Travels", author: "Jonathan Swift", status: "Available" },
+  { id: 145, title: "Heart of Darkness", author: "Joseph Conrad", status: "Available" },
+  { id: 146, title: "Leaves of Grass", author: "Walt Whitman", status: "Available" },
+  { id: 147, title: "The Waste Land", author: "T.S. Eliot", status: "Available" },
+  { id: 148, title: "The Canterbury Tales", author: "Geoffrey Chaucer", status: "Available" },
+  { id: 149, title: "Paradise Lost", author: "John Milton", status: "Available" },
+  { id: 150, title: "The Republic", author: "Plato", status: "Available" },
+  { id: 151, title: "The Odyssey Redux", author: "Homer", status: "Available" },
+  { id: 152, title: "Walden", author: "Henry David Thoreau", status: "Available" }
 ];
