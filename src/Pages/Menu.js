@@ -1,39 +1,19 @@
-import React from 'react';
-import { coffeeMenu } from '../Data/MenuData';
+export const coffeeMenu = [
+  { id: 1, name: "N-Ice Signature Iced Macchiato", price: "$4.99", category: "Cold", image: "/macchiato.jpg" },
+  { id: 2, name: "Dark Roast Espresso Shot", price: "$2.50", category: "Hot", image: "/espresso.jpg" },
+  { id: 3, name: "Vanilla Bean Cold Brew", price: "$4.25", category: "Cold", image: "/coldbrew.jpg" },
+  { id: 4, name: "Bookworm Matcha Green Tea", price: "$5.15", category: "Hot", image: "/matcha.jpg" },
+  { id: 5, name: "Classic Hot Mocha Latte", price: "$3.99", category: "Hot", image: "/mocha.jpg" },
+  { id: 6, name: "Salted Caramel Nitro Frappe", price: "$5.50", category: "Cold", image: "/frappe.jpg" },
+  { id: 7, name: "Cortado Cinnamon Blend", price: "$3.75", category: "Hot", image: "/cortado.jpg" },
+  { id: 8, name: "White Chocolate Iced Mocha", price: "$5.25", category: "Cold", image: "/whitemocha.jpg" },
+  { id: 9, name: "Affogato Espresso Scoop", price: "$4.50", category: "Cold", image: "/affogato.jpg" }
+];
 
-const Menu = () => {
-  return (
-    <div className="container my-5">
-      <div className="text-center mb-5">
-        <h2 className="fw-bold text-dark display-6">Our Handcrafted Cafe Menu</h2>
-        <p className="text-muted">Freshly roasted, sustainably sourced beans, extracted perfectly to match your reading rhythm.</p>
-      </div>
-
-      <div className="row g-4">
-        {coffeeMenu.map((item) => (
-          <div className="col-sm-12 col-md-6 col-lg-4" key={item.id}>
-            <div className="card h-100 border-0 shadow-sm overflow-hidden bg-white">
-              <div className="position-relative">
-                <img src={item.image} className="w-100" alt={item.name} style={{ height: '240px', objectFit: 'cover' }} />
-                <span className={`position-absolute top-0 end-0 m-3 badge px-3 py-2 ${item.category === 'Hot' ? 'bg-danger' : 'bg-primary'}`}>
-                  {item.category}
-                </span>
-              </div>
-              <div className="card-body d-flex flex-column justify-content-between p-4">
-                <div>
-                  <h5 className="card-title fw-bold text-dark mb-2">{item.name}</h5>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                  <span className="text-muted small">Price per serving</span>
-                  <span className="text-success fw-bold fs-4">{item.price}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Menu;
+export const libraryBooks = [
+  { id: 101, title: "The Great Gatsby", author: "F. Scott Fitzgerald", status: "Available" },
+  { id: 102, title: "To Kill a Mockingbird", author: "Harper Lee", status: "Borrowed" },
+  { id: 103, title: "1984", author: "George Orwell", status: "Unavailable" },
+  { id: 104, title: "The Catcher in the Rye", author: "J.D. Salinger", status: "Available" },
+  { id: 105, title: "Brave New World", author: "Aldous Huxley", status: "Unavailable" }
+];

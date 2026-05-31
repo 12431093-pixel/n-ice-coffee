@@ -4,6 +4,7 @@ import Home from './Pages/Home';
 import Menu from './Pages/Menu';
 import Challenge from './Pages/Challenge';
 import Contact from './Pages/Contact';
+import Library from './Pages/Library'; // New Import
 
 const App = () => {
   return (
@@ -16,18 +17,11 @@ const App = () => {
           </button>
           <div className="collapse navbar-collapse" id="niceCoffeeNav">
             <ul className="navbar-nav ms-auto mb-2 mb-md-0">
-              <li className="nav-item">
-                <Link className="nav-link px-3" to="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3" to="/menu">Menu</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3" to="/challenge">30s Challenge</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3 text-warning fw-bold" to="/contact">Reservations</Link>
-              </li>
+              <li className="nav-item"><Link className="nav-link px-3" to="/">Home</Link></li>
+              <li className="nav-item"><Link className="nav-link px-3" to="/menu">Menu</Link></li>
+              <li className="nav-item"><Link className="nav-link px-3 text-info fw-bold" to="/library">📚 Shelf Status</Link></li>
+              <li className="nav-item"><Link className="nav-link px-3" to="/challenge">30s Challenge</Link></li>
+              <li className="nav-item"><Link className="nav-link px-3 text-warning fw-bold" to="/contact">Reservations</Link></li>
             </ul>
           </div>
         </div>
@@ -37,6 +31,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/library" element={<Library />} />
           <Route path="/challenge" element={<Challenge />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
