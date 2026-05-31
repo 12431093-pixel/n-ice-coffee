@@ -19,6 +19,7 @@ const Menu = () => {
             <div className="card h-100 border-0 shadow-sm overflow-hidden bg-white d-flex flex-column justify-content-between">
               <div>
                 <div className="position-relative">
+                  {/* FIX: Directly uses the image link passed from MenuData array item */}
                   <img src={item.image} className="w-100" alt={item.name} style={{ height: '240px', objectFit: 'cover' }} />
                   <span className={`position-absolute top-0 end-0 m-3 badge px-3 py-2 ${item.category === 'Hot' ? 'bg-danger' : 'bg-primary'}`}>
                     {item.category}
@@ -34,7 +35,6 @@ const Menu = () => {
                   <span className="text-muted small">Price per serving</span>
                   <span className="text-success fw-bold fs-4">{item.price}</span>
                 </div>
-                {/* Course Requirement Met: Functional Action Form Submission Button */}
                 <button className="btn btn-warning w-100 fw-bold text-dark shadow-sm" onClick={() => handlePlaceOrder(item.name)}>
                   Order Now ☕
                 </button>
