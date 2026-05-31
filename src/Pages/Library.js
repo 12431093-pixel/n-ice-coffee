@@ -66,13 +66,13 @@ const Library = () => {
       {filteredBooks.length > 0 ? (
         <div className="card shadow-sm border-0 bg-white p-4" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
           <table className="table table-hover align-middle mb-0">
-            {/* Bug Fix: Solid bg-dark applied to prevent overlapping transparent text on scroll */}
-            <thead className="table-dark sticky-top" style={{ top: 0, zIndex: 2 }}>
+            {/* PERMANENT FIX: Hardcoded Solid Hex Color values ensure zero transparency overlaps on render loops */}
+            <thead className="sticky-top" style={{ top: 0, zIndex: 10 }}>
               <tr>
-                <th className="bg-dark text-white py-3">Book Title</th>
-                <th className="bg-dark text-white py-3">Author Name</th>
-                <th className="bg-dark text-white py-3">Current Status</th>
-                <th className="bg-dark text-white py-3 text-center">Actions</th>
+                <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Book Title</th>
+                <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Author Name</th>
+                <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Current Status</th>
+                <th className="text-white py-3 text-center" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
