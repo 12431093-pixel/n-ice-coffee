@@ -46,7 +46,7 @@ const Library = () => {
         <p className="text-muted">Explore our catalog or search for a specific title below.</p>
       </div>
 
-      {/* Course Requirement Met: Controlled Text Search Input Filter Element */}
+      {/* Controlled Text Search Input Filter Element */}
       <div className="row justify-content-center mb-4">
         <div className="col-md-6">
           <div className="input-group shadow-sm">
@@ -65,13 +65,14 @@ const Library = () => {
       {/* Scenario A: Search Results are Present */}
       {filteredBooks.length > 0 ? (
         <div className="card shadow-sm border-0 bg-white p-4" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
-          <table className="table table-hover align-middle">
-            <thead className="table-dark sticky-top">
+          <table className="table table-hover align-middle mb-0">
+            {/* Bug Fix: Solid bg-dark applied to prevent overlapping transparent text on scroll */}
+            <thead className="table-dark sticky-top" style={{ top: 0, zIndex: 2 }}>
               <tr>
-                <th>Book Title</th>
-                <th>Author Name</th>
-                <th>Current Status</th>
-                <th className="text-center">Actions</th>
+                <th className="bg-dark text-white py-3">Book Title</th>
+                <th className="bg-dark text-white py-3">Author Name</th>
+                <th className="bg-dark text-white py-3">Current Status</th>
+                <th className="bg-dark text-white py-3 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -132,7 +133,7 @@ const Library = () => {
                   required
                   value={requestForm.bookTitle} 
                   onChange={(e) => setRequestForm({ ...requestForm, bookTitle: e.target.value })}
-                  readOnly={!isCustomRequest} // Editable only if custom text title was typed
+                  readOnly={!isCustomRequest}
                 />
               </div>
               <div className="mb-3">
