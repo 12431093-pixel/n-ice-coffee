@@ -18,12 +18,13 @@ const Menu = () => {
           <div className="col-sm-12 col-md-6 col-lg-4" key={item.id}>
             <div className="card h-100 border-0 shadow-sm overflow-hidden bg-white d-flex flex-column justify-content-between">
               <div>
-                <div className="position-relative d-flex align-items-center justify-content-center p-3 bg-light" style={{ height: '220px' }}>
+                <div className="position-relative d-flex align-items-center justify-content-center bg-light" style={{ height: '220px' }}>
+                  {/* High-compatibility vector renderer */}
                   <img 
                     src={item.image} 
-                    className="img-fluid" 
+                    className="w-100 h-100" 
                     alt={item.name} 
-                    style={{ maxHeight: '180px', objectFit: 'contain' }} 
+                    style={{ objectFit: 'cover' }} 
                   />
                   <span className={`position-absolute top-0 end-0 m-3 badge px-3 py-2 ${item.category === 'Hot' ? 'bg-danger' : 'bg-primary'}`}>
                     {item.category}

@@ -4,63 +4,63 @@ export const coffeeMenu = [
     name: "N-Ice Signature Iced Macchiato",
     price: "$4.99",
     category: "Cold",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%234682B4'/><text y='60' x='20' font-size='40'>🧋</text></svg>"
   },
   {
     id: 2,
     name: "Dark Roast Espresso Shot",
     price: "$2.50",
     category: "Hot",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%238B4513'/><text y='60' x='20' font-size='40'>☕</text></svg>"
   },
   {
     id: 3,
     name: "Vanilla Bean Cold Brew",
     price: "$4.25",
     category: "Cold",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232F4F4F'/><text y='60' x='20' font-size='40'>🥤</text></svg>"
   },
   {
     id: 4,
     name: "Bookworm Matcha Green Tea",
     price: "$5.15",
     category: "Hot",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232E8B57'/><text y='60' x='20' font-size='40'>🍵</text></svg>"
   },
   {
     id: 5,
     name: "Classic Hot Mocha Latte",
     price: "$3.99",
     category: "Hot",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23A0522D'/><text y='60' x='20' font-size='40'>☕</text></svg>"
   },
   {
     id: 6,
     name: "Salted Caramel Nitro Frappe",
     price: "$5.50",
     category: "Cold",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23D2B48C'/><text y='60' x='20' font-size='40'>🍹</text></svg>"
   },
   {
     id: 7,
     name: "Cortado Cinnamon Blend",
     price: "$3.75",
     category: "Hot",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23CD853F'/><text y='60' x='20' font-size='40'>☕</text></svg>"
   },
   {
     id: 8,
     name: "White Chocolate Iced Mocha",
     price: "$5.25",
     category: "Cold",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F5DC'/><text y='60' x='20' font-size='40'>🥤</text></svg>"
   },
   {
     id: 9,
     name: "Affogato Espresso Scoop",
     price: "$4.50",
     category: "Cold",
-    image: "https://wikimedia.org"
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FFF8DC'/><text y='60' x='20' font-size='40'>🍨</text></svg>"
   }
 ];
 
@@ -110,7 +110,7 @@ export const libraryBooks = [
   { id: 143, title: "The Count of Monte Cristo", author: "Alexandre Dumas", status: "Available" },
   { id: 144, title: "Gulliver's Travels", author: "Jonathan Swift", status: "Available" },
   { id: 145, title: "Heart of Darkness", author: "Joseph Conrad", status: "Available" },
-  { id: 146, title: "Leaves of Grass", Walt: "Whitman", status: "Available" },
+  { id: 146, title: "Leaves of Grass", author: "Walt Whitman", status: "Available" },
   { id: 147, title: "The Waste Land", author: "T.S. Eliot", status: "Available" },
   { id: 148, title: "The Canterbury Tales", author: "Geoffrey Chaucer", status: "Available" },
   { id: 149, title: "Paradise Lost", author: "John Milton", status: "Available" },
