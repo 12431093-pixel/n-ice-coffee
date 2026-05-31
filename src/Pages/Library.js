@@ -64,28 +64,29 @@ const Library = () => {
 
       {/* Scenario A: Search Results are Present */}
       {filteredBooks.length > 0 ? (
-        <div className="card shadow-sm border-0 bg-white p-4" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
+        /* FIX: Removed p-4 container padding so items slide all the way up without getting trapped */
+        <div className="card shadow-sm border-0 bg-white" style={{ maxHeight: '500px', overflowY: 'auto' }}>
           <table className="table table-hover align-middle mb-0">
-            {/* PERMANENT FIX: Hardcoded Solid Hex Color values ensure zero transparency overlaps on render loops */}
+            {/* FIX: Set top to 0 and solid background to cover the background cleanly */}
             <thead className="sticky-top" style={{ top: 0, zIndex: 10 }}>
               <tr>
-                <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Book Title</th>
+                <th className="text-white ps-4 py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Book Title</th>
                 <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Author Name</th>
                 <th className="text-white py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Current Status</th>
-                <th className="text-white py-3 text-center" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Actions</th>
+                <th className="text-white pe-4 py-3 text-center" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredBooks.map((book) => (
                 <tr key={book.id}>
-                  <td className="fw-bold text-dark">{book.title}</td>
-                  <td className="text-secondary">{book.author}</td>
-                  <td>
+                  <td className="fw-bold text-dark ps-4 py-3">{book.title}</td>
+                  <td className="text-secondary py-3">{book.author}</td>
+                  <td className="py-3">
                     <span className={`badge px-3 py-2 ${book.status === 'Available' ? 'bg-success' : 'bg-warning text-dark'}`}>
                       {book.status}
                     </span>
                   </td>
-                  <td className="text-center">
+                  <td className="text-center pe-4 py-3">
                     {book.status === 'Available' ? (
                       <button className="btn btn-outline-success btn-sm disabled w-100" style={{ maxWidth: '160px' }}>Ready to Read</button>
                     ) : (
@@ -100,7 +101,7 @@ const Library = () => {
           </table>
         </div>
       ) : (
-        /* Scenario B: Dynamic Condition Met - Book Not Found Action Trigger Interface */
+        /* Scenario B: Book Not Found Action Trigger Interface */
         <div className="text-center p-5 bg-white rounded shadow-sm border">
           <div className="fs-1 mb-2">📖❌</div>
           <h4 className="fw-bold text-muted mb-3">"{searchTerm}" is not found on our shop's shelves</h4>
