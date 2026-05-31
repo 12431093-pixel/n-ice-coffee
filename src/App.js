@@ -4,7 +4,7 @@ import Home from './Pages/Home';
 import Menu from './Pages/Menu';
 import Challenge from './Pages/Challenge';
 import Contact from './Pages/Contact';
-import Library from './Pages/Library'; // New Import
+import Library from './Pages/Library'; 
 
 const App = () => {
   return (

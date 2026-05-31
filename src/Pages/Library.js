@@ -5,7 +5,7 @@ const Library = () => {
   const [books] = useState(libraryBooks);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBook, setSelectedBook] = useState(null);
-  const [formType, setFormType] = useState(''); // 'borrow', 'return', or 'custom'
+  const [formType, setFormType] = useState(''); 
   const [requestForm, setRequestForm] = useState({ name: '', email: '', bookTitle: '', isStudent: false, studentId: '' });
 
   const filteredBooks = books.filter(book => 
@@ -139,7 +139,7 @@ const Library = () => {
                 <input type="text" className="form-control bg-light" required value={requestForm.bookTitle} readOnly={formType !== 'custom'} />
               </div>
 
-              {/* Student Form Verification Section Inside Actions Popup Container */}
+              
               {formType === 'borrow' && (
                 <div className="mb-3 p-3 bg-light rounded border border-success">
                   <div className="form-check form-switch mb-2">
