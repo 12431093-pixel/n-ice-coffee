@@ -5,7 +5,7 @@ const Library = () => {
   const [books] = useState(libraryBooks);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBook, setSelectedBook] = useState(null);
-  const [isCustomRequest, setIsCustomRequest] = useState(false);
+  const [formType, setFormType] = useState(''); // 'borrow', 'return', or 'custom'
   const [requestForm, setRequestForm] = useState({ name: '', email: '', bookTitle: '' });
 
   // Filter books dynamically based on name input
@@ -13,29 +13,42 @@ const Library = () => {
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Opens form for an existing book that is borrowed
-  const handleOpenBorrowedForm = (book) => {
+  // Opens form to borrow a book sitting on the shelf
+  const handleOpenBorrowForm = (book) => {
     setSelectedBook(book);
-    setIsCustomRequest(false);
+    setFormType('borrow');
     setRequestForm({ name: '', email: '', bookTitle: book.title });
   };
 
-  // Opens form for a completely new missing book
+  // Opens form for an existing book that is currently checked out
+  const handleOpenBorrowedForm = (book) => {
+    setSelectedBook(book);
+    setFormType('return');
+    setRequestForm({ name: '', email: '', bookTitle: book.title });
+  };
+
+  // Opens form for a completely missing book
   const handleOpenCustomForm = () => {
-    setIsCustomRequest(true);
-    setSelectedBook(true); // Triggers the modal visibility overlay
+    setSelectedBook(true);
+    setFormType('custom');
     setRequestForm({ name: '', email: '', bookTitle: searchTerm });
   };
 
   const handleCloseForm = () => {
     setSelectedBook(null);
-    setIsCustomRequest(false);
+    setFormType('');
     setRequestForm({ name: '', email: '', bookTitle: '' });
   };
 
   const handleSubmitRequest = (e) => {
     e.preventDefault();
-    alert(`Thank you ${requestForm.name}! Your request for "${requestForm.bookTitle}" has been logged. The book will be made available in a few days.`);
+    if (formType === 'borrow') {
+      alert(`Success! "${requestForm.bookTitle}" is registered to ${requestForm.name}. Please remember it must be returned within a maximum of 3 weeks!`);
+    } else if (formType === 'return') {
+      alert(`Thank you ${requestForm.name}! Your return alert request for "${requestForm.bookTitle}" has been logged. We will email you when it's back on shelves.`);
+    } else {
+      alert(`Thank you ${requestForm.name}! Your custom acquisition request for "${requestForm.bookTitle}" has been logged. The book will be made available in a few days.`);
+    }
     handleCloseForm();
   };
 
@@ -43,10 +56,10 @@ const Library = () => {
     <div className="container my-5">
       <div className="text-center mb-5">
         <h2 className="fw-bold text-dark display-6">📚 In-House Library Tracker</h2>
-        <p className="text-muted">Explore our catalog or search for a specific title below.</p>
+        <p className="text-muted">Explore our catalog, search for titles, or register a loan checkout.</p>
       </div>
 
-      {/* Controlled Text Search Input Filter Element */}
+      {/* Controlled Search Bar Component */}
       <div className="row justify-content-center mb-4">
         <div className="col-md-6">
           <div className="input-group shadow-sm">
@@ -64,10 +77,8 @@ const Library = () => {
 
       {/* Scenario A: Search Results are Present */}
       {filteredBooks.length > 0 ? (
-        /* FIX: Removed p-4 container padding so items slide all the way up without getting trapped */
         <div className="card shadow-sm border-0 bg-white" style={{ maxHeight: '500px', overflowY: 'auto' }}>
           <table className="table table-hover align-middle mb-0">
-            {/* FIX: Set top to 0 and solid background to cover the background cleanly */}
             <thead className="sticky-top" style={{ top: 0, zIndex: 10 }}>
               <tr>
                 <th className="text-white ps-4 py-3" style={{ backgroundColor: '#212529', borderBottom: '2px solid #ffc107' }}>Book Title</th>
@@ -88,9 +99,11 @@ const Library = () => {
                   </td>
                   <td className="text-center pe-4 py-3">
                     {book.status === 'Available' ? (
-                      <button className="btn btn-outline-success btn-sm disabled w-100" style={{ maxWidth: '160px' }}>Ready to Read</button>
+                      <button className="btn btn-success btn-sm shadow-sm w-100" style={{ maxWidth: '160px' }} onClick={() => handleOpenBorrowForm(book)}>
+                        Borrow Book
+                      </button>
                     ) : (
-                      <button className="btn btn-dark btn-sm shadow-sm w-100" style={{ maxWidth: '160px' }} onClick={() => handleOpenBorrowedForm(book)}>
+                      <button className="btn btn-outline-dark btn-sm w-100" style={{ maxWidth: '160px' }} onClick={() => handleOpenBorrowedForm(book)}>
                         Request Return
                       </button>
                     )}
@@ -101,7 +114,7 @@ const Library = () => {
           </table>
         </div>
       ) : (
-        /* Scenario B: Book Not Found Action Trigger Interface */
+        /* Scenario B: Book Not Found falling back to procurement interface */
         <div className="text-center p-5 bg-white rounded shadow-sm border">
           <div className="fs-1 mb-2">📖❌</div>
           <h4 className="fw-bold text-muted mb-3">"{searchTerm}" is not found on our shop's shelves</h4>
@@ -120,12 +133,21 @@ const Library = () => {
           <div className="card p-4 shadow-lg border-0 bg-white" style={{ width: '100%', maxWidth: '450px' }}>
             <div className="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
               <h5 className="fw-bold text-dark m-0">
-                {isCustomRequest ? "📋 Custom Book Sourcing Form" : "📋 Return Request Form"}
+                {formType === 'borrow' && "📋 Book Borrow Checkout"}
+                {formType === 'return' && "📋 Return Alert Request"}
+                {formType === 'custom' && "📋 Custom Book Sourcing Request"}
               </h5>
               <button type="button" className="btn-close" onClick={handleCloseForm}></button>
             </div>
             
             <form onSubmit={handleSubmitRequest}>
+              {/* Notice conditions for Loan Duration Terms inside the card */}
+              {formType === 'borrow' && (
+                <div className="alert alert-info py-2 px-3 small fw-bold mb-3">
+                  ⚠️ Notice: The maximum loan period for this item is exactly 3 weeks.
+                </div>
+              )}
+
               <div className="mb-3">
                 <label className="form-label small fw-bold text-secondary">Book Name</label>
                 <input 
@@ -134,7 +156,7 @@ const Library = () => {
                   required
                   value={requestForm.bookTitle} 
                   onChange={(e) => setRequestForm({ ...requestForm, bookTitle: e.target.value })}
-                  readOnly={!isCustomRequest}
+                  readOnly={formType !== 'custom'}
                 />
               </div>
               <div className="mb-3">
