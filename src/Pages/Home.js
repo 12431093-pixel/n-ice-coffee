@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div className="container my-5">
-      {/* 1. WELCOME HERO SECTION */}
+      {/* 1. WELCOME HERO SECTION - Text fixed to remove duplicate challenge mentions */}
       <div className="p-5 mb-5 bg-dark text-white rounded-3 shadow text-center position-relative overflow-hidden">
         <div className="py-4">
           <h1 className="display-4 fw-bold text-warning mb-3">Sip, Study & Read at N-Ice-Coffee</h1>
           <p className="fs-5 mx-auto text-light" style={{ maxWidth: '700px' }}>
-            Welcome to Lebanon's premier workspace sanctuary. Enjoy premium specialty coffee blends, step into our quiet reading room, or test your speed in our arena.
+            Welcome to Lebanon's premier workspace sanctuary. Enjoy premium specialty coffee blends, settle down with a hot drink, and find your quiet space inside our library reading room.
           </p>
           <div className="mt-4 d-flex justify-content-center gap-3 flex-wrap">
             <Link to="/menu" className="btn btn-warning btn-lg px-4 fw-bold shadow-sm">Explore Our Menu</Link>
