@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div className="container my-5">
-      {/* 1. WELCOME HERO SECTION - Text fixed to remove duplicate challenge mentions */}
+      
       <div className="p-5 mb-5 bg-dark text-white rounded-3 shadow text-center position-relative overflow-hidden">
         <div className="py-4">
           <h1 className="display-4 fw-bold text-warning mb-3">Sip, Study & Read at N-Ice-Coffee</h1>
@@ -18,9 +18,9 @@ const Home = () => {
         </div>
       </div>
 
-      {/* 2. BALANCED GRID CONTENT SECTION */}
+     
       <div className="row g-4 align-items-stretch mb-5">
-        {/* Card A: The Literary Reading Sanctuary */}
+        
         <div className="col-md-6">
           <div className="card h-100 p-4 border-0 shadow-sm bg-white d-flex flex-column justify-content-between">
             <div>
@@ -30,15 +30,16 @@ const Home = () => {
               </p>
             </div>
             <img 
-              src="/library.jpg" 
+              src="https://thf.bing.com/th/id/OIP.memfJfCQzH6q_Gp11zS2wgHaFT?w=243&h=180&c=7&r=0&o=7&cb=thfc1falcon&dpr=1.3&pid=1.7&rm=3" 
               className="img-fluid rounded shadow-sm mt-3" 
               alt="Reading Space Library" 
+              
               style={{ height: '220px', objectFit: 'cover' }}
             />
           </div>
         </div>
 
-        {/* Card B: The Speed Drink Challenge */}
+       
         <div className="col-md-6">
           <div className="card h-100 p-4 border-0 shadow-sm text-white bg-dark d-flex flex-column justify-content-between">
             <div>
@@ -57,7 +58,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* 3. DEDICATED STUDENT PRIVILEGE SECTION */}
       <div className="p-4 mb-4 bg-light rounded-3 border border-warning shadow-sm">
         <div className="container-fluid py-2">
           <div className="row align-items-center">
