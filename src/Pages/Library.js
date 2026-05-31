@@ -6,48 +6,45 @@ const Library = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBook, setSelectedBook] = useState(null);
   const [formType, setFormType] = useState(''); // 'borrow', 'return', or 'custom'
-  const [requestForm, setRequestForm] = useState({ name: '', email: '', bookTitle: '' });
+  const [requestForm, setRequestForm] = useState({ name: '', email: '', bookTitle: '', isStudent: false, studentId: '' });
 
-  // Filter books dynamically based on name input
   const filteredBooks = books.filter(book => 
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Opens form to borrow a book sitting on the shelf
   const handleOpenBorrowForm = (book) => {
     setSelectedBook(book);
     setFormType('borrow');
-    setRequestForm({ name: '', email: '', bookTitle: book.title });
+    setRequestForm({ name: '', email: '', bookTitle: book.title, isStudent: false, studentId: '' });
   };
 
-  // Opens form for an existing book that is currently checked out
   const handleOpenBorrowedForm = (book) => {
     setSelectedBook(book);
     setFormType('return');
-    setRequestForm({ name: '', email: '', bookTitle: book.title });
+    setRequestForm({ name: '', email: '', bookTitle: book.title, isStudent: false, studentId: '' });
   };
 
-  // Opens form for a completely missing book
   const handleOpenCustomForm = () => {
     setSelectedBook(true);
     setFormType('custom');
-    setRequestForm({ name: '', email: '', bookTitle: searchTerm });
+    setRequestForm({ name: '', email: '', bookTitle: searchTerm, isStudent: false, studentId: '' });
   };
 
   const handleCloseForm = () => {
     setSelectedBook(null);
     setFormType('');
-    setRequestForm({ name: '', email: '', bookTitle: '' });
+    setRequestForm({ name: '', email: '', bookTitle: '', isStudent: false, studentId: '' });
   };
 
   const handleSubmitRequest = (e) => {
     e.preventDefault();
     if (formType === 'borrow') {
-      alert(`Success! "${requestForm.bookTitle}" is registered to ${requestForm.name}. Please remember it must be returned within a maximum of 3 weeks!`);
+      const weeksAllowed = requestForm.isStudent ? '6 weeks (Student Privilege Extended Limit)' : '3 weeks';
+      alert(`Success! "${requestForm.bookTitle}" is now registered to ${requestForm.name}.\n\nMaximum loan period: ${weeksAllowed}.`);
     } else if (formType === 'return') {
-      alert(`Thank you ${requestForm.name}! Your return alert request for "${requestForm.bookTitle}" has been logged. We will email you when it's back on shelves.`);
+      alert(`Thank you ${requestForm.name}! Your return alert request for "${requestForm.bookTitle}" has been logged.`);
     } else {
-      alert(`Thank you ${requestForm.name}! Your custom acquisition request for "${requestForm.bookTitle}" has been logged. The book will be made available in a few days.`);
+      alert(`Thank you ${requestForm.name}! Your custom acquisition request for "${requestForm.bookTitle}" has been logged.`);
     }
     handleCloseForm();
   };
@@ -59,7 +56,6 @@ const Library = () => {
         <p className="text-muted">Explore our catalog, search for titles, or register a loan checkout.</p>
       </div>
 
-      {/* Controlled Search Bar Component */}
       <div className="row justify-content-center mb-4">
         <div className="col-md-6">
           <div className="input-group shadow-sm">
@@ -75,7 +71,6 @@ const Library = () => {
         </div>
       </div>
 
-      {/* Scenario A: Search Results are Present */}
       {filteredBooks.length > 0 ? (
         <div className="card shadow-sm border-0 bg-white" style={{ maxHeight: '500px', overflowY: 'auto' }}>
           <table className="table table-hover align-middle mb-0">
@@ -114,12 +109,11 @@ const Library = () => {
           </table>
         </div>
       ) : (
-        /* Scenario B: Book Not Found falling back to procurement interface */
         <div className="text-center p-5 bg-white rounded shadow-sm border">
           <div className="fs-1 mb-2">📖❌</div>
           <h4 className="fw-bold text-muted mb-3">"{searchTerm}" is not found on our shop's shelves</h4>
           <p className="text-secondary mb-4 mx-auto" style={{maxWidth: '500px'}}>
-            We can source it for you! Click the button below to submit a custom reading acquisition form, and our baristas will stock it within a few days.
+            We can source it for you! Click the button below to submit a custom reading acquisition form.
           </p>
           <button className="btn btn-warning btn-lg fw-bold text-dark shadow-sm" onClick={handleOpenCustomForm}>
             Require This Book
@@ -127,7 +121,6 @@ const Library = () => {
         </div>
       )}
 
-      {/* Dynamic Pop-up Modal Form Overlay Layer */}
       {selectedBook && (
         <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 1050 }}>
           <div className="card p-4 shadow-lg border-0 bg-white" style={{ width: '100%', maxWidth: '450px' }}>
@@ -141,43 +134,46 @@ const Library = () => {
             </div>
             
             <form onSubmit={handleSubmitRequest}>
-              {/* Notice conditions for Loan Duration Terms inside the card */}
+              <div className="mb-3">
+                <label className="form-label small fw-bold text-secondary">Book Name</label>
+                <input type="text" className="form-control bg-light" required value={requestForm.bookTitle} readOnly={formType !== 'custom'} />
+              </div>
+
+              {/* Student Form Verification Section Inside Actions Popup Container */}
               {formType === 'borrow' && (
-                <div className="alert alert-info py-2 px-3 small fw-bold mb-3">
-                  ⚠️ Notice: The maximum loan period for this item is exactly 3 weeks.
+                <div className="mb-3 p-3 bg-light rounded border border-success">
+                  <div className="form-check form-switch mb-2">
+                    <input 
+                      className="form-check-input" 
+                      type="checkbox" 
+                      id="modalStudentSwitch" 
+                      checked={requestForm.isStudent}
+                      onChange={(e) => setRequestForm({ ...requestForm, isStudent: e.target.checked })}
+                    />
+                    <label className="form-check-label fw-bold text-dark" htmlFor="modalStudentSwitch">
+                      🎓 I am a Student (Extend to 6 Weeks)
+                    </label>
+                  </div>
+                  {requestForm.isStudent && (
+                    <input 
+                      type="text" 
+                      className="form-control form-control-sm mt-2" 
+                      placeholder="Enter University ID Card Number..." 
+                      required 
+                      value={requestForm.studentId}
+                      onChange={(e) => setRequestForm({ ...requestForm, studentId: e.target.value })}
+                    />
+                  )}
                 </div>
               )}
 
               <div className="mb-3">
-                <label className="form-label small fw-bold text-secondary">Book Name</label>
-                <input 
-                  type="text" 
-                  className="form-control bg-light" 
-                  required
-                  value={requestForm.bookTitle} 
-                  onChange={(e) => setRequestForm({ ...requestForm, bookTitle: e.target.value })}
-                  readOnly={formType !== 'custom'}
-                />
-              </div>
-              <div className="mb-3">
                 <label className="form-label small fw-bold text-secondary">Your Full Name</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  required 
-                  value={requestForm.name} 
-                  onChange={(e) => setRequestForm({ ...requestForm, name: e.target.value })} 
-                />
+                <input type="text" className="form-control" required value={requestForm.name} onChange={(e) => setRequestForm({ ...requestForm, name: e.target.value })} />
               </div>
               <div className="mb-4">
                 <label className="form-label small fw-bold text-secondary">Email Address</label>
-                <input 
-                  type="email" 
-                  className="form-control" 
-                  required 
-                  value={requestForm.email} 
-                  onChange={(e) => setRequestForm({ ...requestForm, email: e.target.value })} 
-                />
+                <input type="type" className="form-control" required value={requestForm.email} onChange={(e) => setRequestForm({ ...requestForm, email: e.target.value })} />
               </div>
               <div className="d-flex gap-2">
                 <button type="button" className="btn btn-light w-50" onClick={handleCloseForm}>Cancel</button>
