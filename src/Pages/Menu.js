@@ -18,13 +18,13 @@ const Menu = () => {
           <div className="col-sm-12 col-md-6 col-lg-4" key={item.id}>
             <div className="card h-100 border-0 shadow-sm overflow-hidden bg-white d-flex flex-column justify-content-between">
               <div>
-                {/* SAFE VISUAL FALLBACK: Uses a solid color block with a coffee cup icon to guarantee 100% load success */}
-                <div className="position-relative d-flex align-items-center justify-content-center text-white" 
-                     style={{ height: '200px', backgroundColor: item.category === 'Hot' ? '#8B4513' : '#4682B4' }}>
-                  <div className="text-center">
-                    <span style={{ fontSize: '4rem' }}>☕</span>
-                    <div className="fw-bold small mt-2 uppercase">{item.category} Brew</div>
-                  </div>
+                <div className="position-relative d-flex align-items-center justify-content-center p-3 bg-light" style={{ height: '220px' }}>
+                  <img 
+                    src={item.image} 
+                    className="img-fluid" 
+                    alt={item.name} 
+                    style={{ maxHeight: '180px', objectFit: 'contain' }} 
+                  />
                   <span className={`position-absolute top-0 end-0 m-3 badge px-3 py-2 ${item.category === 'Hot' ? 'bg-danger' : 'bg-primary'}`}>
                     {item.category}
                   </span>
